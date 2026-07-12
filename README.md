@@ -25,7 +25,7 @@ I attached the second adapter of the Ubuntu Router and the Windows clients to a 
 
 <img width="781" height="518" alt="screenshot_01" src="https://github.com/user-attachments/assets/331497d2-6005-456a-8ada-742f2da18b6f" />
 > Figure 1: VirtualBox Network Adapter Settings
-> > This screenshot confirms the hardware layer isolation. The network interface card is explicitly mapped to an Internal Network named `Subnet-B-Client`, ensuring it is securely grouped onto the correct virtual switch segment.
+> This screenshot confirms the hardware layer isolation. The network interface card is explicitly mapped to an Internal Network named `Subnet-B-Client`, ensuring it is securely grouped onto the correct virtual switch segment.
 
 ---
 
@@ -45,7 +45,7 @@ By default, standard operating systems are "selfish"—if they receive a packet 
 
 <img width="917" height="885" alt="screenshot_03" src="https://github.com/user-attachments/assets/de601701-4afe-4e73-ba91-f1c0235020ca" />
 > Figure 3: Verification of Static IP Assignments on the Linux Router
->  > Caption: Using the `ip a` command to verify that our Netplan configurations applied successfully. The output proves that interface `enp0s3` is bound to `192.168.10.1/24` and interface `enp0s8` is bound to `192.168.20.1/24`, allowing the server to sit simultaneously on both subnets.
+> Using the `ip a` command to verify that our Netplan configurations applied successfully. The output proves that interface `enp0s3` is bound to `192.168.10.1/24` and interface `enp0s8` is bound to `192.168.20.1/24`, allowing the server to sit simultaneously on both subnets.
 
 ---
 
