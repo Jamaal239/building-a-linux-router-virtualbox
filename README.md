@@ -33,7 +33,7 @@ I attached the second adapter of the Ubuntu Router and the Windows clients to a 
 Next, I booted into the Ubuntu server to identify the system names of the network interface cards (NICs) assigned by VirtualBox so I could prepare them for configuration.
 
 <img width="918" height="885" alt="screenshot_02" src="https://github.com/user-attachments/assets/c0c7383e-4602-4330-b7cd-fbe739505bbf" />
-> Figure 2: Verifying Available Network Interfaces via Linux CLI >
+> Figure 2: Verifying Available Network Interfaces via Linux CLI 
 > Running the `ip link show` command reveals the active network adapters on the Linux kernel. This step was crucial to identify `enp0s3` (connected to Subnet A) and `enp0s8` (connected to Subnet B) before writing the IP configuration files.
 
 ---
