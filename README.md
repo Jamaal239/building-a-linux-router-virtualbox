@@ -23,7 +23,7 @@ I started by isolating the virtual machines using VirtualBox's **Internal Networ
 
 I attached the second adapter of the Ubuntu Router and the Windows clients to a matching internal network named **`Subnet-B-Client`**.
 
-![Screenshot 1](screenshot_01.png)
+[Screenshot 1](screenshot_01.png)
 > **Figure 1: VirtualBox Network Adapter Settings** > *Caption: This screenshot confirms the hardware layer isolation. The network interface card is explicitly mapped to an Internal Network named `Subnet-B-Client`, ensuring it is securely grouped onto the correct virtual switch segment.*
 
 ---
@@ -31,7 +31,7 @@ I attached the second adapter of the Ubuntu Router and the Windows clients to a 
 ### Phase 2: Identifying Router Interfaces
 Next, I booted into the Ubuntu server to identify the system names of the network interface cards (NICs) assigned by VirtualBox so I could prepare them for configuration.
 
-![Screenshot 2](screenshot_02.png)
+[Screenshot 2](screenshot_02.png)
 > **Figure 2: Verifying Available Network Interfaces via Linux CLI** > *Caption: Running the `ip link show` command reveals the active network adapters on the Linux kernel. This step was crucial to identify `enp0s3` (connected to Subnet A) and `enp0s8` (connected to Subnet B) before writing the IP configuration files.*
 
 ---
@@ -41,7 +41,7 @@ By default, standard operating systems are "selfish"—if they receive a packet 
 1. I used **Netplan** to assign static IP addresses to both of the router's network adapters.
 2. I modified the Linux configuration file at `/etc/sysctl.conf` and enabled `net.ipv4.ip_forward=1` to allow cross-interface traffic.
 
-![Screenshot 3](screenshot_03.png)
+[Screenshot 3](screenshot_03.png)
 > **Figure 3: Verification of Static IP Assignments on the Linux Router** > *Caption: Using the `ip a` command to verify that our Netplan configurations applied successfully. The output proves that interface `enp0s3` is bound to `192.168.10.1/24` and interface `enp0s8` is bound to `192.168.20.1/24`, allowing the server to sit simultaneously on both subnets.*
 
 ---
@@ -57,7 +57,7 @@ Instead of starting the entire lab over from scratch, I used my engineering and 
 
 To prove that the Linux router was successfully forwarding packets across subnets, I ran an ICMP connectivity test from the Windows Server command prompt to the **far-side** interface of the router. 
 
-![Screenshot 4](screenshot_04.jpg)
+[Screenshot 4](screenshot_04.jpg)
 > **Figure 4: Successful Cross-Subnet Ping Test from Windows Domain Controller** > *Caption: The ultimate proof of concept. The first test verifies local connectivity to the gateway (`192.168.20.1`). The second test successfully pings the far-side interface (`192.168.10.1`). Because the packets successfully traversed the Linux kernel from one network segment to another with 0% packet loss, it confirms the Linux router is fully operational.*
 
 ---
